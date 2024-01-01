@@ -9,7 +9,7 @@ const humidity = document.querySelector(".humidity");
 const weatherData = document.querySelector(".weather");
 const error = document.querySelector(".error");
 const imageSrc = document.querySelector(".weather-icon");
-
+const description = document.querySelector('.description')
 async function checkWeather(cityName) {
   const res = await fetch(apiUrl + cityName + `&appid=${apiKey}`);
   if (res.status == 404) {
@@ -17,11 +17,12 @@ async function checkWeather(cityName) {
     weatherData.style.display = "none";
   } else {
     const data = await res.json();
-
+     console.log(data)
     city.innerHTML = data.name;
     temperature.innerHTML = Math.round(data.main.temp) + "°C";
     humidity.innerHTML = data.main.humidity + "%";
     windSpeed.innerHTML = data.wind.speed + "km/h";
+    description.innerHTML = data.weather[0].description
 
     switch (data.weather[0].main) {
       case "Clouds":

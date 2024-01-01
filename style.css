@@ -85,6 +85,10 @@ body {
   margin-top: 50px;
 }
 
+.description {
+  color:lightgray;
+}
+
 .col {
   display: flex;
   align-items: center;
